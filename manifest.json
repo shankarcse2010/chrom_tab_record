@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Screen recorder",
+  "description": "You can record chrome tab, continuosly",
+  "version": "1",
+  "icons": { 
+    "16": "icon_1.png",
+    "48": "icon_1.png",
+   "128": "icon_1.png" },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["tabs", "activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css":["content_style.css"],
+      "js": [
+        "./libraries/jquery-3.4.0.min.js",
+        "./libraries/FileSaver.js",
+        "content_script.js"
+      ]
+    }
+  ],
+  "browser_action":{
+    "default_icon":"icon_1.png",
+    "default_title":"Screen recorder",
+    "default_popup":"browser_action.html"
+  }
+}
